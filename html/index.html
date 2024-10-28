@@ -1,0 +1,13 @@
+<html>
+<body>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.transactionType === "playSound") {
+                const audio = new Audio(`sounds/${event.data.transactionFile}.ogg`);
+                audio.volume = event.data.transactionVolume || 0.8;
+                audio.play().catch(error => console.error("Audio playback failed:", error));
+            }
+        });
+    </script>
+</body>
+</html>
